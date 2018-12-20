@@ -1,5 +1,5 @@
 # matlab-esurface-visualization
-Toolbox for visualizing ECoG electrodes on brain surface
+Toolbox for visualizing ECoG electrodes on brain surface. In our examples we use lectrode localization output from [Hermes et al., 2010](https://www.sciencedirect.com/science/article/pii/S0165027009005408) and [Branco et al., 2018](https://www.sciencedirect.com/science/article/pii/S0165027017303783)
 
 Uses [newcolorbar](https://nl.mathworks.com/matlabcentral/fileexchange/52505-newcolorbar--multiple-colormaps-in-the-same-axes?focused=3893317&tab=function&requestedDomain=true )
 
