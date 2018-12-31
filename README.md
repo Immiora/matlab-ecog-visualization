@@ -1,7 +1,7 @@
 # matlab-esurface-visualization
 Toolbox for visualizing ECoG electrodes on brain surface. In our examples we use lectrode localization output from [Hermes et al., 2010](https://www.sciencedirect.com/science/article/pii/S0165027009005408) ([Git](https://github.com/dorahermes/Paper_Hermes_2010_JNeuroMeth)) and [Branco et al., 2018](https://www.sciencedirect.com/science/article/pii/S0165027017303783)
 
-fMRI t-map projections are done using toolbox by 
+fMRI t-map projections are done using toolbox by [Dora Hermes](https://scholar.google.com/citations?user=d33Z2KEAAAAJ&hl=en).
 
 Uses [newcolorbar](https://nl.mathworks.com/matlabcentral/fileexchange/52505-newcolorbar--multiple-colormaps-in-the-same-axes?focused=3893317&tab=function&requestedDomain=true )
 
