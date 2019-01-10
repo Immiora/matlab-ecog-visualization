@@ -7,8 +7,10 @@ fMRI t-map projections are done using toolbox by [Dora Hermes](https://scholar.g
 
 ```
 load('mean_MNI_mesh_cortex.mat')
+load('fmri_t-map.mat')
 load('electrodes.mat')
-eb_visualizer(surface, [], electrodes)
+load('ecog_r-map.mat')
+eb_visualizer(surface, fmri_tmap, electrodes, ecog_rmap)
 ```
 # see alternatives:
 - [ ] [iELVis: An open source MATLAB toolbox for localizing and visualizing human intracranial electrode data](https://www.sciencedirect.com/science/article/pii/S0165027017300365?via%3Dihub)
