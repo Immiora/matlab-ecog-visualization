@@ -1,11 +1,10 @@
-function s_data = eb_visualizer_e_data2s_data(vertices, els, edata, hemi)
+function s_data = eb_visualizer_e_data2s_data(vertices, els, edata, hemi, fade)
 len     = size(vertices, 1);
 s_data  = zeros(len, 1);
-fade    = 3;
 
 nonanind = find(~isnan(edata));
 
-for el = nonanind';
+for el = nonanind'
     b_z = abs(vertices(:,3)-els(el,3));
     b_y = abs(vertices(:,2)-els(el,2));
     if strcmp(hemi, 'l'), 

@@ -54,6 +54,9 @@ if ~isfield(opts, 'els_bringup')
     end
 end
 
+if ~isfield(opts, 'plot_els_locations')
+    opts.plot_els_locations = false; end
+
 if ~isfield(opts, 'els_form')
     opts.els_form              = 'filled'; end
 
