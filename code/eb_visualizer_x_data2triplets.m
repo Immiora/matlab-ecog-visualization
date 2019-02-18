@@ -7,12 +7,17 @@ x_data_triplets = nan(size(x_data, 1), 3);
 d               = x_data(indices_x_colors);
 x_data_range    = double(range(rng));
 x_data_min      = double(rng(1));
-
-x_data_norm     = round((d - x_data_min) ./ x_data_range * 63 + 1);
-% x_colors        = ones(size(d, 1), 3) * base_col;
 x_colors        = repmat(base_col, [size(d, 1), 1]); 
-x_data_norm(x_data_norm > 64) = 64;
-x_data_norm(x_data_norm < 1) = 1;
+
+if x_data_range > 0
+    x_data_norm     = round((d - x_data_min) ./ x_data_range * 63 + 1);
+    x_data_norm(x_data_norm > 64) = 64;
+    x_data_norm(x_data_norm < 1) = 1;
+else
+    x_data_norm = ones(size(x_data)) * 64;
+end
+
+% x_colors        = ones(size(d, 1), 3) * base_col;
 % x_data_norm(round(x_data, 5) == 0) = 1;  %%%%%%%
 
 % if mean(cmap(1, :)) == base_col,
@@ -31,7 +36,13 @@ end
 x_data_triplets(indices_x_colors, :) = x_colors;
 x_data_triplets(~indices_x_colors, :) = repmat(base_col, [sum(~indices_x_colors), 1]);
 
-x_data_norm     = round((x_data - x_data_min) ./ x_data_range * 63 + 1);
-x_data_norm(x_data_norm > 64) = 64;
-x_data_norm(x_data_norm < 1) = 1;
+if x_data_range > 0
+    x_data_norm     = round((d - x_data_min) ./ x_data_range * 63 + 1);
+    x_data_norm(x_data_norm > 64) = 64;
+    x_data_norm(x_data_norm < 1) = 1;
+else
+    x_data_norm = ones(size(x_data)) * 64;
+end
+
+
 % x_data_norm(round(x_data, 5) == 0) = 1; %%%%%%%

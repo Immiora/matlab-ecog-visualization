@@ -170,8 +170,10 @@ if plot_e_data
     if size(electrode_data, 2) == 1   
         if isempty(e_data_span)
             e_data_span = [min(electrode_data), max(electrode_data)];
-            assert(e_data_span(1) ~= e_data_span(2), ...
-                                        'Range of electrode_data is 0')
+            if diff(e_data_span) == 0
+                warning('ebvis_warn:input', ...
+                    'Range of electrode data is 0\n')
+            end
             fprintf(['\tno range was specified -> ', ...
             'calculated from data: min = ', num2str(e_data_span(1)), ...
             ', max = ', num2str(e_data_span(2)), '\n'])
@@ -446,7 +448,8 @@ if plot_e_data && e_data_colorbar_show
      colormap(ax0, e_cmap)
      e_data_cbar = colorbar(ax0, 'southoutside', 'fontsize', 10, ...
                                     'axislocation', 'out'); 
-     caxis(ax0, e_data_span)
+     
+     if diff(e_data_span) > 0, caxis(ax0, e_data_span); end
 
      if ~isempty(e_data_colorbar_label)
         e_data_cbar.Label.String = e_data_colorbar_label;
