@@ -131,8 +131,7 @@ if plot_s_data
            warning('ebvis_warn:input', ...
                ['Reshaped surface_data to match number of vertices: ', ...
                num2str(size(vertices, 1)), '\n'])
-       elseif (size(surface_data, 1) == size(electrodes, 1)) || ...
-                    (size(surface_data, 1) == size(electrodes, 1))
+       elseif any(size(surface_data)== size(electrodes, 1))
             if size(surface_data, 2) == size(electrodes, 1)
                surface_data = surface_data';
                warning('ebvis_warn:input', ...
@@ -329,7 +328,7 @@ end
 
 if plot_electrodes && ~plot_e_data && plot_els_locations
     hold on
-    e_data_color_default = [0 0 0];
+    % e_data_color_default = [0 0 0];
     switch els_form
         case 'filled'
             eM = '.';
