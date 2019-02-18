@@ -474,8 +474,8 @@ function cm = adjust_s_cmap(s_cmap, cmap_type, surf_color_default)
     if strcmp(cmap_type, 'seq')
        cm = [surf_color_default; cm];
     elseif strcmp(cmap_type, 'div')
-        cm = [cm(1:size(cm, 1)/2-15, :); ...
-       repmat(surf_color_default, [16, 1]); cm(size(cm, 1)/2+16:end, :)];
+        cm = [cm(1:size(cm, 1)/2-8, :); ...
+       repmat(surf_color_default, [16, 1]); cm(size(cm, 1)/2+9:end, :)];
     end
 
 

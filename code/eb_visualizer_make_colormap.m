@@ -6,6 +6,8 @@ function [cmap, ctype] = eb_visualizer_make_colormap(mapstr, base_col, lim)
 
 if nargin < 3, lim = 64; end
 
+reverse = false;
+
 [cmap, ctype] = deal([]);
 
 built_in.seq = {'parula', 'hot', 'cool', 'spring', 'summer', ...
@@ -20,12 +22,22 @@ cbrewer_maps.seq = {'Blues','BuGn','BuPu','GnBu','Greens','Greys','Oranges', ...
 cbrewer_maps.div = {'BrBG', 'PiYG', 'PRGn', 'PuOr', 'RdBu', 'RdGy', ...
                 'RdYlBu', 'RdYlGn'};
 
+if contains(mapstr, '_r'), reverse = true; end
+
 temp = fieldnames(cbrewer_maps);
 for i = 1:length(fieldnames(cbrewer_maps))
-    if any(ismember(cbrewer_maps.(temp{i}), mapstr))
-        assert(logical(exist('cbrewer', 'file')), 'Cbrewer is not found on path')
-        cmap = cbrewer(temp{i}, mapstr, lim);
-        ctype = temp{i};
+    if ~reverse
+        if any(ismember(cbrewer_maps.(temp{i}), mapstr))
+            assert(logical(exist('cbrewer', 'file')), 'Cbrewer is not found on path')
+            cmap = cbrewer(temp{i}, mapstr, lim);
+            ctype = temp{i};
+        end
+    else
+        if any(ismember(cbrewer_maps.(temp{i}), mapstr(1:strfind(mapstr, '_r')-1)))
+            assert(logical(exist('cbrewer', 'file')), 'Cbrewer is not found on path')
+            cmap = flipud(cbrewer(temp{i}, mapstr(1:strfind(mapstr, '_r')-1), lim));
+            ctype = temp{i};
+        end
     end
 end
 
